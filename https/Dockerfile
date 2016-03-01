@@ -7,6 +7,7 @@ MAINTAINER https://github.com/gnilchee/atlas
 
 # Install Go
 RUN \
+  mkdir -p /etc/atlas/ssl && \
   mkdir -p /goroot && mkdir -p /gopath/static && \
   apt-get -y update && apt-get -y upgrade && apt-get -y install curl && \
   curl https://storage.googleapis.com/golang/go1.6.linux-amd64.tar.gz | tar xvzf - -C /goroot --strip-components=1
@@ -17,11 +18,13 @@ ENV GOPATH /gopath
 ENV PATH $GOROOT/bin:$GOPATH/bin:$PATH
 
 ADD atlas.go /gopath/
+ADD ~/TLS/certfile.crt /etc/atlas/ssl/
+ADD ~/TLS/keyfile.key /etc/atlas/ssl/
 
 VOLUME /gopath/static
 
 WORKDIR /gopath
 
-EXPOSE 8080
+EXPOSE 4443
 
 CMD go run atlas.go

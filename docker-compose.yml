@@ -1,6 +1,10 @@
-webserver:
-  build: .
+https:
+  build: https/.
   ports:
-    - "80:8080"
+    - "443:4443"
   volumes:
     - ~/atlas/static:/gopath/static
+redirector:
+  build: redirector/.
+  ports:
+    - "80:8080"
