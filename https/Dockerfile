@@ -18,8 +18,8 @@ ENV GOPATH /gopath
 ENV PATH $GOROOT/bin:$GOPATH/bin:$PATH
 
 ADD atlas.go /gopath/
-ADD ~/TLS/certfile.crt /etc/atlas/ssl/
-ADD ~/TLS/keyfile.key /etc/atlas/ssl/
+ADD certfile.crt /etc/atlas/ssl/
+ADD keyfile.key /etc/atlas/ssl/
 
 VOLUME /gopath/static
 
