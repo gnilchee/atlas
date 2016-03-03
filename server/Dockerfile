@@ -26,5 +26,6 @@ VOLUME /gopath/static
 WORKDIR /gopath
 
 EXPOSE 4443
+EXPOSE 8080
 
 CMD go run atlas.go
