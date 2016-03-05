@@ -10,7 +10,7 @@ func main() {
     http.Handle("/", fs)
 
     log.Println("Server is listening on 4443 and 8080...")
-    http.ListenAndServeTLS("0.0.0.0:4443", "/etc/atlas/ssl/certfile.crt", "/etc/atlas/ssl/keyfile.key", nil)
+    go http.ListenAndServeTLS("0.0.0.0:4443", "/etc/atlas/ssl/certfile.crt", "/etc/atlas/ssl/keyfile.key", nil)
     http.ListenAndServe("0.0.0.0:8080", http.HandlerFunc(redirector))
 }
 
